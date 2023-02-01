@@ -25,12 +25,8 @@ public class Main {
 
             } else if (input.startsWith("delete")) {
                 // call delete
-
-                if(input.substring(6).trim().length() == 1) {
-                    deleteFromCart(cart, Integer.parseInt(input.substring(6).trim()));
-                } else {
-                    deleteFromCart(cart, input.substring(6).trim());
-                }
+                deleteFromCart(cart, input);
+                
             } else if (input.startsWith("exit")) {
                 stopShopping(cart);
             } else {
@@ -57,14 +53,20 @@ public class Main {
         }
     }
 
-    private static void deleteFromCart(List<String> cart, String item) {
-        item = item.trim().toLowerCase();
+    private static void deleteFromCart(List<String> cart, String content) {
+        content = content.substring(6).trim().toLowerCase();
         
-        if(cart.contains(item)) {
-            deleteFromCart(cart, cart.indexOf(item));
+        if(content.length() == 1) {
+            deleteFromCart(cart, Integer.parseInt(content));
         } else {
-            System.out.printf("The cart does not have %s.\n", item);
+            if(cart.contains(content)) {
+                deleteFromCart(cart, cart.indexOf(content));
+            } else {
+                System.out.printf("The cart does not have %s.\n", content);
+            }
+    
         }
+
     }
 
     private static void addToCart(List<String> cart, String input) {
