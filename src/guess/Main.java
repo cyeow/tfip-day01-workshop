@@ -20,7 +20,8 @@ public class Main {
         Console cons = System.console();
         boolean hasWon = false;
 
-        System.out.printf("To guess: %d\n", number);
+        //System.out.printf("To guess: %d\n", number);
+        
         System.out.printf("Guess a number between 1 and 20.\n");
         while(tries > 0 && !hasWon) {
             guess = Integer.parseInt(cons.readLine("What is your guess? (%d tries)\n", tries));
